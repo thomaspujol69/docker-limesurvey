@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       # TODO Update storage location as desired
-      - ./surveys:/var/www/html/upload/surveys
+      - surveys:/var/www/html/upload/surveys
     networks:
       - limesurvey-db
     ports:
@@ -18,7 +18,7 @@ services:
       # If you require an empty table prefix, use a space as the DB_TABLE_PREFIX
       # - "DB_TABLE_PREFIX= "
   lime-db:
-    image: mariadb:11.4
+    image: docker.io/mariadb:11.4
     networks:
       - limesurvey-db
     environment:
@@ -27,6 +27,9 @@ services:
       # TODO set passwords
       # - "MYSQL_PASSWORD="
       # - "MYSQL_ROOT_PASSWORD="
+
+volumes:
+  surveys:
 
 networks:
   limesurvey-db:
